@@ -7,11 +7,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 var http = require('http').Server(app);
-var fs  = require('fs');
+
+
 const path = require('path');
 var port = 4200
-var currentVid = '/sv-s1-e1.mp4'
+var files = []
 function hostVideo(req, res){
+  var currentVid = req.query.vidString
+  var fs  = require('fs');
   console.log(currentVid)
   const path = __dirname + currentVid
   const stat = fs.statSync(path)
@@ -24,7 +27,9 @@ function hostVideo(req, res){
       ? parseInt(parts[1], 10)
       : fileSize-1
     const chunksize = (end-start)+1
+    
     const file = fs.createReadStream(path, {start, end})
+    files.push(file)
     const head = {
       'Content-Range': `bytes ${start}-${end}/${fileSize}`,
       'Accept-Ranges': 'bytes',
@@ -44,10 +49,10 @@ function hostVideo(req, res){
   
 }
 app.use(cors());
-app.use(express.static(path.join(__dirname, '/build/')));
+app.use(express.static(path.join(__dirname, '/')));
 // hosts the site
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/index.html'));
+  res.sendFile(path.join(__dirname + '/index.html'));
 });
 // gets all the camps
 app.get('/video', function(req, res) {
