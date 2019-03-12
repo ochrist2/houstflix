@@ -49,10 +49,10 @@ function hostVideo(req, res){
   
 }
 app.use(cors());
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, '/build/')));
 // hosts the site
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/index.html'));
+  res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 // gets all the camps
 app.get('/video', function(req, res) {

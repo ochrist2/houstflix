@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import ReactPlayer from 'react-player'
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
   state = {
     vidName: '/sv-s1-e1.mp4',
   }
@@ -16,9 +13,14 @@ class App extends Component {
   render() {
     let url = 'http://159.203.43.108:4200/video' + '?vidString=' + this.state.vidName
     return (
-      <div className="App">
-        <a href={url} download>View Vid</a>
+      <div className="App" style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+	<br/>
+	<ReactPlayer controls={true} url={url} playing />
+	<br />        
+	<a href={url} download>Download (or open in a new tab to watch)</a>
         <br/>
+	<a href='http://159.203.43.108:4200/urls' download>View URLs</a>
+	<br/>
         <input type="text" value={this.state.vidName} onChange={this.handleChange} />
       </div>
     );
