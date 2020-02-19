@@ -1,3 +1,15 @@
+Houstflix is a react site and express backend that streams videos
+
+# To build the site
+
+Run `npm run build`
+
+# To run the server
+
+Run `node server.js`, the server will start on `localhost:4200` and the `/` route will bring you to the homepage of the site
+
+# CREATE REACT APP INFO
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
