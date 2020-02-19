@@ -13,7 +13,6 @@ Run `node server.js`, the server will start on `localhost:4200`
 * All videos must be `mp4` files
 * `/` will bring you to the homepage of the site
 * Changing the text to the name of a file in the `videos` directory and clicking `Change Video` will load that video on the video player
-* Clicking `View urls` will download a file named `urls` in the root directory
 
 # CREATE REACT APP INFO
 
