@@ -15,7 +15,7 @@ function hostVideo(req, res) {
   var currentVid = req.query.vidString;
   var fs = require("fs");
   console.log(currentVid);
-  const path = __dirname + currentVid;
+  const path = __dirname + '/videos' + currentVid;
   const stat = fs.statSync(path);
   const fileSize = stat.size;
   const range = req.headers.range;

@@ -4,8 +4,8 @@ import ReactPlayer from "react-player";
 const BASE_URL = "http://localhost:4200";
 class App extends Component {
   state = {
-    vidName: "sv-s1-e1.mp4",
-    selectVideoText: "sv-s1-e1.mp4"
+    vidName: "sample.mp4",
+    selectVideoText: "sample.mp4"
   };
 
   handleChange = event => {
@@ -15,8 +15,8 @@ class App extends Component {
     this.setState({ vidName: this.state.selectVideoText });
   };
   render() {
-    const { videoName, selectVideoText } = this.state;
-    const url = `${BASE_URL}/video?vidString=/${videoName}`;
+    const { vidName, selectVideoText } = this.state;
+    const url = `${BASE_URL}/video?vidString=/${vidName}`;
     return (
       <div
         className="App"
@@ -32,10 +32,6 @@ class App extends Component {
         <br />
         <a href={url} download>
           Download (or open in a new tab to watch)
-        </a>
-        <br />
-        <a href={`${BASE_URL}/urls`} download>
-          View URLs
         </a>
         <br />
         <input
